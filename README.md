@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OTP Share
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![OTP Share](public/icon.svg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Client-Side Generation · Zero Secret Exposure · Ephemeral Sharing**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Generate 2FA tokens in your browser and share them via secure, one-time links without ever revealing your secret key to the server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Demo](https://your-project-url.vercel.app) · [Report Bug](https://github.com/Kadxy/OTP-share/issues) · [Request Feature](https://github.com/Kadxy/OTP-share/issues)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+</div>
 
-## Learn More
+## ✨ Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🔒 **Zero Secret Exposure**: Your TOTP secret key is used to calculate codes locally in your browser. The secret key is **never** sent to the server.
+- ⏱️ **Ephemeral Access**: Links can be set to expire after a specific time (1h, 12h, 24h).
+- 🔥 **Burn After Reading**: Optional "Single View" mode ensures the link is destroyed immediately after being accessed once.
+- 📱 **Responsive Design**: Optimized for mobile and desktop, perfect for sharing 2FA access with colleagues or family members.
+- 🛡️ **Privacy Focused**: No user accounts required. No tracking.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Database**: PostgreSQL (via Prisma ORM)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: Vercel
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Node.js 18+
+- pnpm (recommended) or npm
+- A PostgreSQL database (Local or Vercel Postgres)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/Kadxy/OTP-share.git](https://github.com/Kadxy/OTP-share.git)
+   cd OTP-share
+   ```
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+3. Configure Environment Variables Rename .env.example to .env (or create one) and add your database connection string:
+   ```bash
+   DATABASE_URL="postgresql://user:password@localhost:5432/otpshare?schema=public"
+   ```
+4. Initialize Database
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+5. Run Development Server
+   ```bash
+   pnpm dev
+   ```
+
+6. Open http://localhost:3000 with your browser.
+
+### How It Works
+
+Input Secret: User enters their TOTP Secret Key in the browser.
+
+Local Calculation: The browser calculates all future TOTP codes for the selected validity period (e.g., next 1 hour).
+
+Secure Storage: Only the generated codes (not the secret key) are sent to the server and stored in the database.
+
+Link Generation: A unique, random 7-character ID is generated.
+
+Access: The recipient opens the link and sees the valid code for the current time window.
+
+### 🤝 Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Fork the Project
+
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+
+Push to the Branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information.

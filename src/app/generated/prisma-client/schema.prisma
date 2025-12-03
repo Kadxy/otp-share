@@ -1,0 +1,22 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma-client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model SecureLink {
+  id                 String   @id
+  codes              String
+  period             Int      @default(30)
+  startTime          BigInt
+  firstCodeTimestamp BigInt
+  burnAfterReading   Boolean  @default(true)
+  accessCount        Int      @default(0)
+  expiresAt          DateTime
+  createdAt          DateTime @default(now())
+}
