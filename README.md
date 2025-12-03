@@ -32,12 +32,26 @@ Generate 2FA tokens in your browser and share them via secure, one-time links wi
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Deployment**: Vercel
 
-## Screenshots
+## 📸 Screenshots
 
-![Screenshot1](/screenshot/image-1.png)
-![Screenshot2](/screenshot/image-2.png)
-![Screenshot3](/screenshot/image-3.png)
-![Screenshot4](/screenshot/image-4.png)
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshot/image-1.png" width="100%" alt="Screenshot 1" />
+    </td>
+    <td align="center">
+      <img src="screenshot/image-2.png" width="100%" alt="Screenshot 2" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshot/image-3.png" width="100%" alt="Screenshot 3" />
+    </td>
+    <td align="center">
+      <img src="screenshot/image-4.png" width="100%" alt="Screenshot 4" />
+    </td>
+  </tr>
+</table>
 
 ## 🚀 Getting Started
 
